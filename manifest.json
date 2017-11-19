@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+
+  "name": "Sit2Play Auto Play",
+  "description": "This extension allows the user to run autoplay for a tvshow on sit2play.com",
+  "version": "1.0",
+
+  "content_scripts" :[
+    {
+      "js": [ "jquery.min.js", "content.js" ],
+      "matches":[
+        "http://sit2play.com/tv/*",
+        "https://sit2play.com/tv/*"
+      ]
+    }
+  ],
+
+  "permissions": [
+    "activeTab"
+    ]
+}
