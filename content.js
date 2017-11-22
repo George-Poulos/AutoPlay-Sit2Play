@@ -20,16 +20,16 @@ var setOnEndedFunction = function(){
 		if(vid.constructor === Array){
 			vid = vid[0];
 		}
-		vid[0].autoplay = true;
+		vid.autoplay = true;
 		console.log(vid);
 		$("video")[0].onended = function(){
 			if(times === -1 || currentPlayed < times){
 				console.log("Playing Next Episode");
-				vid[0].play();
+				this.play();
 				currentPlayed++;
 			}
 			else{
-				vid[0].pause();
+				this.pause();
 			}
 		}
 	},1000);
@@ -40,6 +40,7 @@ var onRequest = function(request, sender, sendResponse) {
     if (request.action == 'sendEpisode'){
     	times = parseInt(request.data, 10);
     	currentPlayed = 0;
+    	sendResponse({'times': times});
     }
 }
 chrome.extension.onMessage.addListener(onRequest);
